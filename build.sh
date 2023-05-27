@@ -3,4 +3,4 @@
 source .env
 
 #mvn -DskipTests clean verify package
-mvn -DskipTests  deploy
+mvn -DskipTests -P deploy deploy
