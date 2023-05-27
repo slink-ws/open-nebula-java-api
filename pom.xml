@@ -22,6 +22,22 @@
         <url>https://github.com/github.com/ws-slink/open-nebula-java-api/tree/master</url>
     </scm>
 
+    <developers>
+        <developer>
+            <name>slink.ws</name>
+            <email>appdev@slink.ws</email>
+            <organization>slink.ws</organization>
+            <organizationUrl>https://github.com/ws-slink</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
