@@ -48,6 +48,7 @@
         <!--
                 fork of unsupported apache xmlrpc needed for open-nebula xmlrpc
                 см. https://github.com/evolvedbinary/apache-xmlrpc
+                    https://archive.apache.org/dist/ws/xmlrpc/binaries/
         -->
         <dependency>
             <groupId>com.evolvedbinary.thirdparty.org.apache.xmlrpc</groupId>
