@@ -7,6 +7,20 @@
     <groupId>ws.slink.thirdparty</groupId>
     <artifactId>open-nebula-java-api</artifactId>
     <version>6.0.0.2</version>
+    <organization>
+        <name>slink.ws</name>
+        <url>https://github.com/ws-slink</url>
+    </organization>
+    <name>OpenNebula java client</name>
+    <description>Maven-wrapped official OpenNebula java client</description>
+    <packaging>jar</packaging>
+    <url>https://github.com/ws-slink/open-nebula-java-api</url>
+
+    <scm>
+        <connection>scm:git:git://github.com/github.com/ws-slink/open-nebula-java-api.git</connection>
+        <developerConnection>scm:git:ssh://github.com:github.com/ws-slink/open-nebula-java-api.git</developerConnection>
+        <url>https://github.com/github.com/ws-slink/open-nebula-java-api/tree/master</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -16,7 +30,7 @@
 
     <dependencies>
         <!--
-                fork более неподдерживаемого apache.xmlrpc, необходимого для работы xmlrpc open nebula
+                fork of unsupported apache xmlrpc needed for open-nebula xmlrpc
                 см. https://github.com/evolvedbinary/apache-xmlrpc
         -->
         <dependency>
@@ -46,6 +60,24 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <keyname>${GPG_KEY_NAME}</keyname>
+                            <passphrase>${GPG_KEY_PASS}</passphrase>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
