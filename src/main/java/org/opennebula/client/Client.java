@@ -99,6 +99,14 @@ public class Client{
         setOneEndPoint(endpoint);
     }
 
+    public Client(String secret, String endpoint, Config config)
+            throws ClientConfigurationException
+    {
+        setOneAuth(secret);
+        setOneEndPoint(endpoint, config);
+    }
+
+
     /**
      * Performs an XML-RPC call.
      *
@@ -216,6 +224,12 @@ public class Client{
     private void setOneEndPoint(String endpoint)
             throws ClientConfigurationException
     {
+        setOneEndPoint(endpoint, null);
+    }
+
+    private void setOneEndPoint(String endpoint, Config clientConfig)
+            throws ClientConfigurationException
+    {
         oneEndPoint = "http://localhost:2633/RPC2";
 
         if(endpoint != null)
@@ -233,7 +247,7 @@ public class Client{
         }
 
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-	    config.setEnabledForExtensions(true);
+        config.setEnabledForExtensions(true);
 
         try
         {
@@ -241,12 +255,21 @@ public class Client{
         }
         catch (MalformedURLException e)
         {
-            throw new ClientConfigurationException(
-                    "The URL "+oneEndPoint+" is malformed.");
+            throw new ClientConfigurationException("The URL "+oneEndPoint+" is malformed.");
+        }
+
+        if (clientConfig != null) {
+            if (clientConfig.getConnectionTimeout() != null) {
+                config.setConnectionTimeout((int)clientConfig.getConnectionTimeout().toMillis());
+            }
+            if (clientConfig.getReplyTimeout() != null) {
+                config.setReplyTimeout((int)clientConfig.getReplyTimeout().toMillis());
+            }
         }
 
         client = new XmlRpcClient();
         client.setTypeFactory(new ExtendedTypeFactoryImpl(client));
         client.setConfig(config);
     }
+
 }
