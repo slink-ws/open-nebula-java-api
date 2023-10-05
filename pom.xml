@@ -6,7 +6,7 @@
 
     <groupId>ws.slink.thirdparty</groupId>
     <artifactId>open-nebula-java-api</artifactId>
-    <version>6.0.0.2-ext</version>
+    <version>6.0.0.2.1</version>
     <organization>
         <name>slink.ws</name>
         <url>https://github.com/ws-slink</url>
